@@ -1,0 +1,221 @@
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0.99 0.003 255;
+    --foreground: 0.14 0.04 265;
+    --card: 1 0 0;
+    --card-foreground: 0.14 0.04 265;
+    --popover: 1 0 0;
+    --popover-foreground: 0.14 0.04 265;
+    --primary: 0.34 0.16 265;
+    --primary-foreground: 0.99 0 0;
+    --secondary: 0.94 0.03 248;
+    --secondary-foreground: 0.28 0.12 265;
+    --muted: 0.96 0.01 248;
+    --muted-foreground: 0.52 0.05 265;
+    --accent: 0.54 0.22 258;
+    --accent-foreground: 0.99 0 0;
+    --destructive: 0.52 0.22 25;
+    --destructive-foreground: 0.99 0 0;
+    --border: 0.91 0.02 248;
+    --input: 0.88 0.02 248;
+    --ring: 0.54 0.22 258;
+    --radius: 0.75rem;
+    --chart-1: 0.54 0.22 258;
+    --chart-2: 0.62 0.18 200;
+    --chart-3: 0.45 0.15 295;
+    --chart-4: 0.68 0.19 168;
+    --chart-5: 0.72 0.18 55;
+    --sidebar: 0.97 0.01 248;
+    --sidebar-foreground: 0.14 0.04 265;
+    --sidebar-primary: 0.34 0.16 265;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.94 0.03 248;
+    --sidebar-accent-foreground: 0.28 0.12 265;
+    --sidebar-border: 0.91 0.02 248;
+    --sidebar-ring: 0.54 0.22 258;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.34 0.16 265),
+      oklch(0.54 0.22 258)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-light {
+    background: linear-gradient(135deg, oklch(0.85 0.08 248), oklch(0.99 0 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 60px -10px oklch(0.54 0.22 258 / 0.35);
+  }
+
+  .glow-blue-sm {
+    box-shadow: 0 0 30px -5px oklch(0.54 0.22 258 / 0.25);
+  }
+
+  .glass-card {
+    background: oklch(1 0 0 / 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid oklch(0.91 0.02 248);
+  }
+
+  .section-fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .section-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px 5px oklch(0.54 0.22 258 / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px 15px oklch(0.54 0.22 258 / 0.55);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(-3deg);
+  }
+}
+
+@keyframes float-slow2 {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+}
+
+@keyframes orb-move {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 15px) scale(0.97);
+  }
+}
+
+@keyframes orb-move2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-25px, 20px) scale(1.03);
+  }
+  66% {
+    transform: translate(20px, -15px) scale(0.98);
+  }
+}
+
+@keyframes line-draw {
+  from {
+    stroke-dashoffset: 200;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 5s ease-in-out infinite;
+}
+
+.animate-float-slow2 {
+  animation: float-slow2 6s ease-in-out infinite;
+}
+
+.animate-orb {
+  animation: orb-move 12s ease-in-out infinite;
+}
+
+.animate-orb2 {
+  animation: orb-move2 15s ease-in-out infinite;
+}
